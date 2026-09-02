@@ -1,4 +1,3 @@
-// api/proxy.js (Vercel Serverless Function)
 export default async function handler(req, res) {
   const targetUrl = req.query.url;
 
@@ -14,11 +13,9 @@ export default async function handler(req, res) {
       }
     });
 
-    // 🟢 CORS ဖွင့်ပေးခြင်း (WebView မှ လှမ်းယူနိုင်ရန်)
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
     
-    // Content Type အမှန်ပြန်ပေးခြင်း (JS, WASM စသည်ဖြင့်)
     const contentType = response.headers.get("content-type");
     if (contentType) {
       res.setHeader("Content-Type", contentType);
